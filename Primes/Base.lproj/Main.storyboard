@@ -68,7 +68,7 @@
                                                     <segment title="Order"/>
                                                 </segments>
                                                 <connections>
-                                                    <action selector="typeSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="Co4-GL-Zls"/>
+                                                    <action selector="rangeTypeSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="uL1-3r-6DU"/>
                                                 </connections>
                                             </segmentedControl>
                                         </subviews>
@@ -106,7 +106,7 @@
                                                     <segment title="Incr."/>
                                                 </segments>
                                                 <connections>
-                                                    <action selector="orderSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="MEa-mT-9XI"/>
+                                                    <action selector="sortOrderSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="0B6-Xr-cyB"/>
                                                 </connections>
                                             </segmentedControl>
                                         </subviews>
@@ -182,17 +182,17 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="countTextField" destination="cb7-63-ywy" id="w00-f2-Z8c"/>
-                        <outlet property="lowerTextField" destination="OT4-6i-9r0" id="KS4-ul-mzk"/>
-                        <outlet property="orderSegmentedControl" destination="wtF-lY-9xa" id="0hU-pG-std"/>
+                        <outlet property="lowerRangeTextField" destination="OT4-6i-9r0" id="wOP-g9-ihk"/>
+                        <outlet property="rangeTypeSegmentedControl" destination="Jrf-D3-2f1" id="Cb7-rD-GxE"/>
+                        <outlet property="returnCountTextField" destination="cb7-63-ywy" id="gDe-ww-FqB"/>
+                        <outlet property="sortOrderSegmentedControl" destination="wtF-lY-9xa" id="AGC-xP-TKf"/>
                         <outlet property="tableView" destination="2Vi-Gl-hNC" id="VPC-D4-TpM"/>
-                        <outlet property="typeSegmentedControl" destination="Jrf-D3-2f1" id="kn6-g4-AYj"/>
-                        <outlet property="upperTextField" destination="jOq-Wt-ZZM" id="W9g-Up-QJi"/>
+                        <outlet property="upperRangeTextField" destination="jOq-Wt-ZZM" id="jd1-yg-2Lh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139.13043478260872" y="3.3482142857142856"/>
+            <point key="canvasLocation" x="-136" y="10"/>
         </scene>
     </scenes>
     <resources>

@@ -93,23 +93,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         returnCountTextField.resignFirstResponder()
     }
     
-    // MARK: - Actions
-    
-    @IBAction func typeSelected(_ sender: UISegmentedControl) {
-        rangeType = RangeType(rawValue: rangeTypeSegmentedControl.selectedSegmentIndex)!
-    }
-    
-    @IBAction func orderSelected(_ sender: UISegmentedControl) {
-        sortOrder = SortOrder(rawValue: sortOrderSegmentedControl.selectedSegmentIndex - 1)!
-    }
-    
-    @IBAction func lookUpSelected(_ sender: UIButton) {
-        guard currentMax.primeNumber > 0 else { return }  // ensure CurrentMax().fetch completed
-        
+    private func lookUpPrimeNumbers() {
         Task {
             primeNumbers = await PrimeNumbers().fetch(lower: lowerRange, upper: upperRange, count: returnCount, type: rangeType, order: sortOrder)
             tableView.reloadData()
         }
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func rangeTypeSelected(_ sender: UISegmentedControl) {
+        rangeType = RangeType(rawValue: rangeTypeSegmentedControl.selectedSegmentIndex)!
+        lookUpPrimeNumbers()
+    }
+    
+    @IBAction func sortOrderSelected(_ sender: UISegmentedControl) {
+        sortOrder = SortOrder(rawValue: sortOrderSegmentedControl.selectedSegmentIndex - 1)!
+        lookUpPrimeNumbers()
+    }
+    
+    @IBAction func lookUpSelected(_ sender: UIButton) {
+        guard currentMax.primeNumber > 0 else { return }  // ensure CurrentMax().fetch completed
+        lookUpPrimeNumbers()
     }
 
     // MARK: - TableViewDataSource
