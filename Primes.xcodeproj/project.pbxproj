@@ -15,6 +15,7 @@
 		4A9F52FC2AC8974C009F7737 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A9F52FB2AC8974C009F7737 /* LaunchScreen.storyboard */; };
 		4A9F53052AC89916009F7737 /* PrimeNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9F53042AC89916009F7737 /* PrimeNumbers.swift */; };
 		4A9F53072AC899FB009F7737 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9F53062AC899FB009F7737 /* StringExtension.swift */; };
+		4A9F530C2AC8EE2B009F7737 /* CurrentMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9F530B2AC8EE2B009F7737 /* CurrentMax.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4A9F52FD2AC8974C009F7737 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A9F53042AC89916009F7737 /* PrimeNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeNumbers.swift; sourceTree = "<group>"; };
 		4A9F53062AC899FB009F7737 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		4A9F530B2AC8EE2B009F7737 /* CurrentMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMax.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		4A9F53082AC8A403009F7737 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				4A9F530B2AC8EE2B009F7737 /* CurrentMax.swift */,
 				4A9F53042AC89916009F7737 /* PrimeNumbers.swift */,
 			);
 			path = API;
@@ -168,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A9F530C2AC8EE2B009F7737 /* CurrentMax.swift in Sources */,
 				4A9F52F82AC8974A009F7737 /* ViewController.swift in Sources */,
 				4A9F52F12AC8974A009F7737 /* AppDelegate.swift in Sources */,
 				4A9F53072AC899FB009F7737 /* StringExtension.swift in Sources */,

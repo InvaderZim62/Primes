@@ -20,27 +20,27 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Uje-Ba-ghV">
                                 <rect key="frame" x="77" y="106.5" width="260" height="212"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="mdK-Ju-lsz">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="mdK-Ju-lsz">
                                         <rect key="frame" x="0.0" y="0.0" width="260" height="34"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZq-6f-WPt">
-                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="34"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lower" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZq-6f-WPt">
+                                                <rect key="frame" x="0.0" y="0.0" width="48.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OT4-6i-9r0">
-                                                <rect key="frame" x="79.5" y="0.0" width="180.5" height="34"/>
+                                                <rect key="frame" x="78.5" y="0.0" width="181.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="46" translatesAutoresizingMaskIntoConstraints="NO" id="fyd-21-6hH">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="fyd-21-6hH">
                                         <rect key="frame" x="0.0" y="46" width="260" height="34"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uso-Tc-5OQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uso-Tc-5OQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -83,6 +83,9 @@
                                                     <segment title="Number"/>
                                                     <segment title="Order"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="typeSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="Co4-GL-Zls"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
@@ -102,6 +105,9 @@
                                                     <segment title="Rand"/>
                                                     <segment title="Incr."/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="orderSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="MEa-mT-9XI"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
@@ -177,11 +183,11 @@
                     </view>
                     <connections>
                         <outlet property="countTextField" destination="cb7-63-ywy" id="w00-f2-Z8c"/>
-                        <outlet property="maxTextField" destination="jOq-Wt-ZZM" id="W9g-Up-QJi"/>
-                        <outlet property="minTextField" destination="OT4-6i-9r0" id="KS4-ul-mzk"/>
+                        <outlet property="lowerTextField" destination="OT4-6i-9r0" id="KS4-ul-mzk"/>
                         <outlet property="orderSegmentedControl" destination="wtF-lY-9xa" id="0hU-pG-std"/>
                         <outlet property="tableView" destination="2Vi-Gl-hNC" id="VPC-D4-TpM"/>
                         <outlet property="typeSegmentedControl" destination="Jrf-D3-2f1" id="kn6-g4-AYj"/>
+                        <outlet property="upperTextField" destination="jOq-Wt-ZZM" id="W9g-Up-QJi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
