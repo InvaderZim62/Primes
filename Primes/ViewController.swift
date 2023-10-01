@@ -24,11 +24,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var upperRange = 100 {
         didSet {
-            upperTextField.text = "\(upperRange)"  // note: calling limitUpperRange() from here causes an infinite loop
+            switch returnType {
+            case .number:
+                upperRange = min(upperRange, currentMax.primeNumber)
+            case .order:
+                upperRange = min(upperRange, currentMax.primeOrder)
+            }
+            upperTextField.text = "\(upperRange)"
         }
     }
     
-    var returnType = ReturnType.number
+    var returnType = ReturnType.number {
+        didSet {
+            upperRange += 0  // cause upperRange.didSet to run
+        }
+    }
+    
     var count = 10
     var returnOrder = ReturnOrder.ascending
     var currentMax = CurrentMax()
@@ -61,22 +72,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         Task {
             // fetch max prime number and max prime order
             currentMax = await CurrentMax().fetch()
-            limitUpperRange()
-        }
-    }
-    
-    private func limitUpperRange() {
-        switch returnType {
-        case .number:
-            upperRange = min(upperRange, currentMax.primeNumber)
-        case .order:
-            upperRange = min(upperRange, currentMax.primeOrder)
+            upperRange += 0  // cause upperRange.didSet to run
         }
     }
     
     @IBAction func typeSelected(_ sender: UISegmentedControl) {
         returnType = ReturnType(rawValue: typeSegmentedControl.selectedSegmentIndex)!
-        limitUpperRange()
     }
     
     @IBAction func orderSelected(_ sender: UISegmentedControl) {
@@ -87,7 +88,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         lowerRange = Int(lowerTextField.text!)!
         upperRange = Int(upperTextField.text!)!
-        limitUpperRange()
         count = Int(countTextField.text!)!
 
         lowerTextField.resignFirstResponder()

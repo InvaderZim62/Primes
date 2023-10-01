@@ -29,7 +29,7 @@ class CurrentMax: NSObject {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let jsonModel = try decoder.decode(JsonModel.self, from: data)
             extractData(from: jsonModel)
-            printData()
+//            printData()
         } catch {
             print("\n(CurrentMax.fetch) \(error.localizedDescription)")
         }
