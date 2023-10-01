@@ -15,12 +15,12 @@ enum FetchError: Error {
     case badStatusCode(Int)  // Int: status code
 }
 
-enum ReturnType: Int {
+enum RangeType: Int {
     case number  // prime number
     case order  // number's placement in prime number order
 }
 
-enum ReturnOrder: Int {
+enum SortOrder: Int {
     case descending = -1
     case random
     case ascending
@@ -34,7 +34,7 @@ class PrimeNumbers: NSObject {
     var lower = 2  // must be >= 2
     var upper = 100
 
-    func fetch(lower: Int, upper: Int, count: Int, type: ReturnType = .number, order: ReturnOrder = .ascending) async -> PrimeNumbers {
+    func fetch(lower: Int, upper: Int, count: Int, type: RangeType = .number, order: SortOrder = .ascending) async -> PrimeNumbers {
         self.lower = max(lower, 2)
         self.upper = upper
         let urlString = "https://prime-number-api.onrender.com/primeNumbers?min=\(self.lower)&max=\(self.upper)&len=\(count)&type=\(type)&order=\(order.rawValue)"
