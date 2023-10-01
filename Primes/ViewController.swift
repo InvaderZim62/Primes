@@ -6,9 +6,12 @@
 //
 //  Prime Number API: https://prime-number-api-docs.onrender.com
 //
-//  The "Upper" input field applies to either prime numbers or prime orders,
-//  depending on the selected "Type" (number or order).  Similarly, the max
-//  allowable value for "Upper" is either maxPrimeNumber or maxPrimeOrder.
+//  Order is the placement of the prime number in the list of all prime numbers.  For example,
+//  number 5's order is 3, since it is the third prime number (2, 3, 5).  Note: 1 is not a prime.
+//
+//  The "Upper" input field applies to either prime numbers or prime orders, depending on the
+//  selected "Type" (number or order).  Similarly, the max allowable value for "Upper" is either
+//  maxPrimeNumber or maxPrimeOrder.
 //
 
 import UIKit
@@ -24,6 +27,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var upperRange = 100 {
         didSet {
+            // limit upperRange to max value in API's database
             switch returnType {
             case .number:
                 upperRange = min(upperRange, currentMax.primeNumber)
@@ -40,7 +44,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-    var count = 10
+    var count = 20
     var returnOrder = ReturnOrder.ascending
     var currentMax = CurrentMax()
     var primeNumbers = PrimeNumbers()
@@ -54,16 +58,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
-            tableView.delegate = self
             tableView.rowHeight = 30
+            tableView.allowsSelection = false
         }
     }
-
+    
+    // MARK: -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        lowerTextField.text = "2"
-        upperTextField.text = "100"
-        countTextField.text = "10"
+        lowerTextField.text = "\(lowerRange)"
+        upperTextField.text = "\(upperRange)"
+        countTextField.text = "\(count)"
         
         lowerTextField.keyboardType = .asciiCapableNumberPad
         upperTextField.keyboardType = .asciiCapableNumberPad
@@ -74,14 +80,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             currentMax = await CurrentMax().fetch()
             upperRange += 0  // cause upperRange.didSet to run
         }
-    }
-    
-    @IBAction func typeSelected(_ sender: UISegmentedControl) {
-        returnType = ReturnType(rawValue: typeSegmentedControl.selectedSegmentIndex)!
-    }
-    
-    @IBAction func orderSelected(_ sender: UISegmentedControl) {
-        returnOrder = ReturnOrder(rawValue: orderSegmentedControl.selectedSegmentIndex - 1)!
     }
     
     // get text field values and dismiss keyboard when tapping anywhere on screen
@@ -95,7 +93,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         countTextField.resignFirstResponder()
     }
     
-    @IBAction func LookUpSelected(_ sender: UIButton) {
+    // MARK: - Actions
+    
+    @IBAction func typeSelected(_ sender: UISegmentedControl) {
+        returnType = ReturnType(rawValue: typeSegmentedControl.selectedSegmentIndex)!
+    }
+    
+    @IBAction func orderSelected(_ sender: UISegmentedControl) {
+        returnOrder = ReturnOrder(rawValue: orderSegmentedControl.selectedSegmentIndex - 1)!
+    }
+    
+    @IBAction func lookUpSelected(_ sender: UIButton) {
         guard currentMax.primeNumber > 0 else { return }  // ensure CurrentMax().fetch completed
         
         Task {
