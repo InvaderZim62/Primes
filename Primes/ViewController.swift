@@ -11,7 +11,11 @@
 //
 //  The "Upper Range" input field applies to either prime numbers or prime orders, depending on
 //  the selected "Range Type" (number or order).  Similarly, the max allowable value for "Upper
-//  Range" is either maxPrimeNumber or maxPrimeOrder, depending on range type.
+//  Range" is either maxPrimeNumber or maxPrimeOrder, depending on the selected range type.
+//
+//  In Interface Builder, for the max range button, I set Title blank and set Intrinsic Size:
+//  Placeholder (Width = 40), since I couldn't figure out how to enter a default SF Symbol using
+//  Interface Builder.
 //
 
 import UIKit
@@ -30,11 +34,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             // limit upperRange to max value in API's database
             switch rangeType {
             case .number:
-                upperRange = min(upperRange, currentMax.primeNumber)
+                upperRange = isMaxRange ? currentMax.primeNumber : min(upperRange, currentMax.primeNumber)
             case .order:
-                upperRange = min(upperRange, currentMax.primeOrder)
+                upperRange = isMaxRange ? currentMax.primeOrder : min(upperRange, currentMax.primeOrder)
             }
             upperRangeTextField.text = "\(upperRange)"
+        }
+    }
+    
+    var isMaxRange = false {
+        didSet {
+            if isMaxRange {
+                maxRangeButton.setImage(UIImage(systemName: "record.circle", withConfiguration: smallConfig), for: .normal)
+                upperRange += 0  // cause upperRange.didSet to run
+            } else {
+                maxRangeButton.setImage(UIImage(systemName: "circle", withConfiguration: smallConfig), for: .normal)
+            }
         }
     }
     
@@ -48,9 +63,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var sortOrder = SortOrder.ascending
     var currentMax = CurrentMax()
     var primeNumbers = PrimeNumbers()
+    let smallConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .small)
 
     @IBOutlet weak var lowerRangeTextField: UITextField!
     @IBOutlet weak var upperRangeTextField: UITextField!
+    @IBOutlet weak var maxRangeButton: UIButton!
     @IBOutlet weak var returnCountTextField: UITextField!
     @IBOutlet weak var rangeTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var sortOrderSegmentedControl: UISegmentedControl!
@@ -67,6 +84,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        isMaxRange = false
+
         lowerRangeTextField.text = "\(lowerRange)"
         upperRangeTextField.text = "\(upperRange)"
         returnCountTextField.text = "\(returnCount)"
@@ -101,6 +120,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // MARK: - Actions
+    
+    @IBAction func upperRangeTextFieldSelected(_ sender: UITextField) {  // used Event: Touch Down, so it clears max range button right away
+        isMaxRange = false
+    }
+    
+    @IBAction func maxRangeSelected(_ sender: UIButton) {
+        isMaxRange.toggle()
+    }
     
     @IBAction func rangeTypeSelected(_ sender: UISegmentedControl) {
         rangeType = RangeType(rawValue: rangeTypeSegmentedControl.selectedSegmentIndex)!
