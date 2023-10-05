@@ -148,7 +148,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2Vi-Gl-hNC">
-                                <rect key="frame" x="97.5" y="344" width="180" height="256"/>
+                                <rect key="frame" x="97.5" y="344" width="180" height="258"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="Ry7-BA-oWU"/>
@@ -190,18 +190,38 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Aca-pn-IaD" firstAttribute="top" secondItem="2Vi-Gl-hNC" secondAttribute="bottom" constant="20" id="6vq-5a-uWd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2Vi-Gl-hNC" secondAttribute="bottom" constant="65" id="A0g-fg-MV8">
+                                <variation key="heightClass=compact" constant="20"/>
+                            </constraint>
                             <constraint firstItem="Aca-pn-IaD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Az9-S7-uAa"/>
                             <constraint firstItem="b8d-Yu-na6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="IFp-GX-GCF"/>
+                            <constraint firstItem="ROb-C5-RhQ" firstAttribute="centerX" secondItem="2Vi-Gl-hNC" secondAttribute="centerX" id="USa-VS-6Zh"/>
                             <constraint firstItem="b8d-Yu-na6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="V1x-BU-xjg"/>
                             <constraint firstItem="2Vi-Gl-hNC" firstAttribute="top" secondItem="ROb-C5-RhQ" secondAttribute="bottom" constant="8" symbolic="YES" id="Zgv-Aa-Pgb"/>
-                            <constraint firstItem="ROb-C5-RhQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fTp-n4-uga"/>
                             <constraint firstItem="2Vi-Gl-hNC" firstAttribute="top" secondItem="Uje-Ba-ghV" secondAttribute="bottom" constant="60" id="plB-ED-a1q"/>
-                            <constraint firstItem="Uje-Ba-ghV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tkX-qw-vGR"/>
-                            <constraint firstItem="Uje-Ba-ghV" firstAttribute="top" secondItem="b8d-Yu-na6" secondAttribute="bottom" constant="20" id="u8G-9h-poU"/>
+                            <constraint firstItem="2Vi-Gl-hNC" firstAttribute="top" secondItem="b8d-Yu-na6" secondAttribute="bottom" constant="40" id="rS6-sh-fHj"/>
+                            <constraint firstItem="Uje-Ba-ghV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tkX-qw-vGR">
+                                <variation key="heightClass=compact" constant="-120"/>
+                            </constraint>
+                            <constraint firstItem="Uje-Ba-ghV" firstAttribute="top" secondItem="b8d-Yu-na6" secondAttribute="bottom" constant="20" id="u8G-9h-poU">
+                                <variation key="heightClass=compact" constant="40"/>
+                            </constraint>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Aca-pn-IaD" secondAttribute="bottom" constant="12" id="v1e-39-pkS"/>
-                            <constraint firstItem="2Vi-Gl-hNC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xnP-aH-T6d"/>
+                            <constraint firstItem="2Vi-Gl-hNC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xnP-aH-T6d">
+                                <variation key="heightClass=compact" constant="190"/>
+                            </constraint>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="rS6-sh-fHj"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="rS6-sh-fHj"/>
+                                <exclude reference="plB-ED-a1q"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="lowerRangeTextField" destination="OT4-6i-9r0" id="wOP-g9-ihk"/>
@@ -223,7 +243,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
