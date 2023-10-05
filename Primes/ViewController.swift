@@ -7,7 +7,8 @@
 //  Prime Number API: https://prime-number-api-docs.onrender.com
 //
 //  Order is the placement of the prime number in the list of all prime numbers.  For example,
-//  number 5's order is 3, since it is the third prime number (2, 3, 5).  Note: 1 is not a prime.
+//  number 5's order is 3, since it is the third prime number (2, 3, 5, 7,...).  Note: 1 is not
+//  a prime.
 //
 //  The "Upper Range" input field applies to either prime numbers or prime orders, depending on
 //  the selected "Range Type" (number or order).  Similarly, the max allowable value for "Upper
